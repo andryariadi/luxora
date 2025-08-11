@@ -1,0 +1,23 @@
+import { products } from "@/libs/constant";
+import ProductCard from "./ProductCard";
+
+const ProductList = () => {
+  return (
+    <section className="bg-fuchsia-500 space-y-5">
+      {/* Category */}
+
+      {/* Filter */}
+
+      {/* Product List */}
+      <div className="bg-rose-500 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+
+      {/* View All Products */}
+    </section>
+  );
+};
+
+export default ProductList;
