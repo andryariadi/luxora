@@ -1,7 +1,8 @@
 "use client";
 
+import useCartStore from "@/libs/stores/cartStore";
 import { ProductType } from "@/libs/types";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -12,36 +13,53 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     color: product.colors[0],
   });
 
+  const { addToCart } = useCartStore();
+
   const handleProductType = ({ type, value }: { type: string; value: string }) => {
-    (prev) => ({ ...prev, [type]: value });
+    setProductTypes((prev) => ({
+      ...prev,
+      [type]: value,
+    }));
+  };
+
+  const handleToCart = () => {
+    addToCart({
+      ...product,
+      quantity: 1,
+      selectedSize: productTypes.size,
+      selectedColor: productTypes.color,
+    });
   };
 
   return (
-    <article className="bg-sky-500">
+    <article className="bg-white shadow-sm rounded-lg overflow-hidden">
       {/* Product Image */}
       <figure className="overflow-hidden">
         <Link href={`/products/${product.id}`}>
-          <div className="relative aspect-[2/3]">
-            <Image src={product.images.gray} alt={product.name} fill className="object-cover hover:scale-105 transition-all duration-500" />
+          <div className="relative aspect-[3/4]">
+            <Image src={product.images[productTypes.color]} alt={product.name} fill className="object-cover hover:scale-105 transition-all duration-500" />
           </div>
         </Link>
       </figure>
 
       {/* Product Info */}
       <figcaption className="p-4 space-y-4">
-        {/* Title */}
-        <h1 className="font-medium">{product.name}</h1>
+        {/* Title & Description */}
+        <div className="space-y-1">
+          {/* Title */}
+          <h1 className="font-medium">{product.name}</h1>
 
-        {/* Description */}
-        <p className="text-sm text-gray-500 line-clamp-2">{product.shortDescription}</p>
+          {/* Description */}
+          <p className="text-sm text-gray-500 line-clamp-2">{product.shortDescription}</p>
+        </div>
 
         {/* Types */}
-        <div className="bg-green-500 flex items-start gap-5">
+        <div className="b-green-500 flex items-start gap-5">
           {/* Sizes */}
           <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Size</span>
+            <span className="text-gray-500 text-xs">Size</span>
 
-            <div className="bg-rose-500 relative">
+            <div className="b-rose-500 relative">
               <select name="size" id="size" className="w-[3.2rem] text-xs font-medium border border-gray-300 rounded-md px-2 py-1 appearance-none" onChange={(e) => handleProductType({ type: "size", value: e.target.value })}>
                 {product.sizes.map((size) => (
                   <option key={size} value={size} className="text-base">
@@ -58,16 +76,11 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
           {/* Colors*/}
           <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Color</span>
+            <span className="text-gray-500 text-xs">Color</span>
 
             <div className="py-1 flex items-center gap-2">
               {product.colors.map((color) => (
-                <button
-                  type="button"
-                  className={`cursor-pointer border-1 ${productTypes.color === color ? "border-gray-400" : "border-gray-200"} rounded-full p-[1.2px]`}
-                  key={color}
-                  onClick={() => handleProductType({ type: "color", value: color })}
-                >
+                <button type="button" className={`border-1 ${productTypes.color === color ? "border-gray-400" : "border-gray-200"} rounded-full p-[1.2px]`} key={color} onClick={() => handleProductType({ type: "color", value: color })}>
                   <div className="w-[14px] h-[14px] rounded-full" style={{ backgroundColor: color }} />
                 </button>
               ))}
@@ -76,12 +89,15 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
 
         {/* Price & Cart */}
-        <div className="bg-fuchsia-500 flex items-center gap-2">
+        <div className="b-fuchsia-500 flex items-center justify-between">
           {/* Price */}
-          <div>andry</div>
+          <p className="font-medium">${product.price.toFixed(2)}</p>
 
           {/* Cart */}
-          <div>andry</div>
+          <button onClick={handleToCart} className="group p-2 rounded-md border-1 border-gray-200 shadow-lg text-sm hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2">
+            <ShoppingCart className="w-4 h-4" />
+            <span className="hidden text-xs group-hover:block transition-all duration-500">Add to Cart</span>
+          </button>
         </div>
       </figcaption>
     </article>

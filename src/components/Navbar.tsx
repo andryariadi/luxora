@@ -6,7 +6,7 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white container flex items-center justify-between border-b border-gray-200 py-3">
+    <nav className="b-white container flex items-center justify-between border-b border-gray-200 py-3">
       {/* Left */}
       <Link href="/" className="flex items-center hover:scale-105 transition-all duration-300">
         <Image src="/logo.png" alt="Luxora" width={36} height={36} className="w-6 h-6 md:w-9 md:h-9" />
