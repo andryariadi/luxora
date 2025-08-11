@@ -167,3 +167,10 @@ export const categories = [
     slug: "gloves",
   },
 ];
+
+export const filters = [
+  { label: "News", value: "news" },
+  { label: "Oldest", value: "oldest" },
+  { label: "Price: Low to Hight", value: "asc" },
+  { label: "Price: High to Low", value: "desc" },
+];

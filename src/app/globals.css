@@ -18,6 +18,7 @@
 html,
 body {
   @apply bg-white;
+  scroll-behavior: smooth;
 }
 
 main {
