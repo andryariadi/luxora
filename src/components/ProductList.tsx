@@ -1,10 +1,12 @@
 import { products } from "@/libs/constant";
 import ProductCard from "./ProductCard";
+import Categories from "./Categories";
 
 const ProductList = () => {
   return (
     <section className="b-fuchsia-500 space-y-5">
       {/* Category */}
+      <Categories />
 
       {/* Filter */}
 

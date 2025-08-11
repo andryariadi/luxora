@@ -21,7 +21,7 @@ body {
 }
 
 main {
-  @apply min-h-screen;
+  @apply min-h-screen py-16;
 }
 
 .container {

@@ -1,4 +1,5 @@
 import { ProductType } from "../types";
+import { Footprints, Glasses, Briefcase, Shirt, ShoppingBasket, Hand, Venus } from "lucide-react";
 
 export const footerLinks = [
   { href: "/", label: "Home" },
@@ -121,5 +122,48 @@ export const products: ProductType[] = [
     sizes: ["s", "m", "l"],
     colors: ["blue", "green"],
     images: { blue: "/products/8b.png", green: "/products/8gr.png" },
+  },
+];
+
+export const categories = [
+  {
+    name: "All",
+    icon: ShoppingBasket,
+    slug: "all",
+  },
+  {
+    name: "T-shirts",
+    icon: Shirt,
+    slug: "t-shirts",
+  },
+  {
+    name: "Shoes",
+    icon: Footprints,
+    slug: "shoes",
+  },
+  {
+    name: "Accessories",
+    icon: Glasses,
+    slug: "accessories",
+  },
+  {
+    name: "Bags",
+    icon: Briefcase,
+    slug: "bags",
+  },
+  {
+    name: "Dresses",
+    icon: Venus,
+    slug: "dresses",
+  },
+  {
+    name: "Jackets",
+    icon: Shirt,
+    slug: "jackets",
+  },
+  {
+    name: "Gloves",
+    icon: Hand,
+    slug: "gloves",
   },
 ];
