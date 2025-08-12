@@ -174,3 +174,18 @@ export const filters = [
   { label: "Price: Low to Hight", value: "asc" },
   { label: "Price: High to Low", value: "desc" },
 ];
+
+export const cardPayment = [
+  {
+    label: "Klarna",
+    icon: "/klarna.png",
+  },
+  {
+    label: "Cards",
+    icon: "/cards.png",
+  },
+  {
+    label: "Stripe",
+    icon: "/stripe.png",
+  },
+];

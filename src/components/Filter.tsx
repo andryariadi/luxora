@@ -24,8 +24,8 @@ const Filter = () => {
   };
 
   return (
-    <div className="b-rose-500 flex items-center justify-end gap-2 text-sm text-gray-500">
-      <div className="bg-white relative">
+    <div className="flex items-center justify-end gap-2 text-sm text-gray-500 overflow-hidden">
+      <div className="bg-white relative overflow-hidden rounded-md">
         <select name="sort" id="sort" value={currentSort} className="w-[9rem] text-xs font-medium border border-gray-300 rounded-md px-2 py-2 appearance-none" onChange={(e) => handleFilter(e.target.value)}>
           <option value="" className="text-base">
             Sort by

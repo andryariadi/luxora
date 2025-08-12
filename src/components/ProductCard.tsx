@@ -31,6 +31,8 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     });
   };
 
+  console.log(product, "<---productCard");
+
   return (
     <article className="bg-white shadow-sm rounded-lg overflow-hidden">
       {/* Product Image */}
@@ -47,10 +49,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         {/* Title & Description */}
         <div className="space-y-1">
           {/* Title */}
-          <h1 className="font-medium">{product.name}</h1>
+          <h1 className="font-medium font-roboto">{product.name}</h1>
 
           {/* Description */}
-          <p className="text-sm text-gray-500 line-clamp-2">{product.shortDescription}</p>
+          <p className="text-sm text-gray-500 line-clamp-2 font-sora">{product.shortDescription}</p>
         </div>
 
         {/* Types */}
