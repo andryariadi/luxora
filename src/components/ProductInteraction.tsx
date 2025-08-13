@@ -13,7 +13,7 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
   const searchParams = useSearchParams();
   const [quantity, setQuantity] = useState(1);
 
-  const { addToCart } = useCartStore();
+  const { addToCart, cart } = useCartStore();
 
   const handleTypeChange = (type: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -43,6 +43,8 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
 
     toast.success("Product added to cart");
   };
+
+  // console.log({ ca rt }, "<---interaction");
 
   return (
     <div className="b-rose-600 space-y-5">

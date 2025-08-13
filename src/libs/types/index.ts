@@ -1,3 +1,6 @@
+import z from "zod";
+import { shippingFormSchema } from "../zod/validation";
+
 export type ProductType = {
   id: string | number;
   name: string;
@@ -25,3 +28,5 @@ export type CartStoreActionsType = {
   //   removeFromCart: (product: CartItemType) => void;
   //   clearCart: () => void;
 };
+
+export type ShippingFormInputs = z.infer<typeof shippingFormSchema>;

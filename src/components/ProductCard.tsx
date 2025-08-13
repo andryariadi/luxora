@@ -13,7 +13,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     color: product.colors[0],
   });
 
-  const { addToCart } = useCartStore();
+  const { addToCart, cart } = useCartStore();
 
   const handleProductType = ({ type, value }: { type: string; value: string }) => {
     setProductTypes((prev) => ({
@@ -31,7 +31,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     });
   };
 
-  console.log(product, "<---productCard");
+  // console.log({ cart }, "<---card");
 
   return (
     <article className="bg-white shadow-sm rounded-lg overflow-hidden">
