@@ -23,7 +23,7 @@ const PaymentForm = () => {
     console.log(data, "<---handlePaymentForm");
   };
   return (
-    <form onSubmit={handleSubmit(handlePaymentForm)} className="bg-amber-500 space-y-5">
+    <form onSubmit={handleSubmit(handlePaymentForm)} className="b-amber-500 space-y-5">
       {/* Name Card Input */}
       <div className="flex flex-col gap-1">
         <label htmlFor="cardHolder" className="text-xs text-gray-500 font-medium">

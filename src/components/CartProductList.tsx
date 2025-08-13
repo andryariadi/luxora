@@ -1,14 +1,17 @@
 "use client";
 
-import { cartItems } from "@/libs/constant";
+import useCartStore from "@/libs/stores/cartStore";
+// import { cartItems } from "@/libs/constant";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 
 const CartProductList = () => {
+  const { cart } = useCartStore();
+
   return (
-    <div className="bg-amber-500 space-y-5">
-      {cartItems.map((item) => (
-        <div className="bg-fuchsia-500 flex items-center justify-between" key={item.id + item.selectedSize + item.selectedColor}>
+    <div className="b-amber-500 space-y-5">
+      {cart.map((item) => (
+        <div className="b-fuchsia-500 flex items-center justify-between" key={item.id + item.selectedSize + item.selectedColor}>
           {/* Image & Product Details */}
           <div className="flex gap-8">
             {/* Product Image */}

@@ -1,5 +1,5 @@
 import z from "zod";
-import { shippingFormSchema } from "../zod/validation";
+import { paymentFormSchema, shippingFormSchema } from "../zod/validation";
 
 export type ProductType = {
   id: string | number;
@@ -30,3 +30,4 @@ export type CartStoreActionsType = {
 };
 
 export type ShippingFormInputs = z.infer<typeof shippingFormSchema>;
+export type PaymentFormInputs = z.infer<typeof paymentFormSchema>;

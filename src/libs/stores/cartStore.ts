@@ -6,16 +6,28 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>((set) => 
   hasHydrated: false,
   addToCart: (product) =>
     set((state) => {
-      const productExists = state.cart.find((item) => item.id === product.id);
+      console.log({ state, product }, "<---addToCart");
 
-      if (productExists) {
-        return {
-          cart: state.cart.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)),
-        };
+      const existingIndex = state.cart.findIndex((p) => p.id === product.id && p.selectedSize === product.selectedSize && p.selectedColor === product.selectedColor);
+
+      if (existingIndex !== -1) {
+        const updatedCart = [...state.cart];
+
+        updatedCart[existingIndex].quantity += product.quantity || 1;
+
+        return { cart: updatedCart };
       }
 
       return {
-        cart: [...state.cart, { ...product, quantity: 1 }],
+        cart: [
+          ...state.cart,
+          {
+            ...product,
+            quantity: product.quantity || 1,
+            selectedSize: product.selectedSize,
+            selectedColor: product.selectedColor,
+          },
+        ],
       };
     }),
 }));

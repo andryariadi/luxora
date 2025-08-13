@@ -29,9 +29,9 @@ const StepsCart = () => {
   const { cart } = useCartStore();
 
   return (
-    <div className="bg-fuchsia-500 w-full space-y-5">
+    <div className="b-fuchsia-500 w-full space-y-5">
       {/* Top - Step Buttons */}
-      <div className="bg-green-500 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+      <div className="b-green-500 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
         {stepsMenu.map((step) => (
           <button type="button" key={step.id} className={`flex items-center gap-2 border-b-2 pb-4 ${step.id === activeStep ? "border-gray-800" : "border-gray-200"}`} onClick={() => handleStepChange(step.id)}>
             {/* Step Number */}
@@ -44,9 +44,9 @@ const StepsCart = () => {
       </div>
 
       {/* Bottom - Step Content */}
-      <div className="bg-rose-600 w-full flex flex-col lg:flex-row gap-16">
+      <div className="b-rose-600 w-full flex flex-col lg:flex-row gap-16">
         {/* Left - Content */}
-        <div className="bg-green-500 w-full lg:w-7/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
+        <div className="b-green-500 w-full lg:w-7/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
           {activeStep === 1 ? (
             <CartProductList />
           ) : activeStep === 2 ? (
@@ -59,11 +59,11 @@ const StepsCart = () => {
         </div>
 
         {/* Right - Cart Detail */}
-        <div className="bg-sky-500 h-max w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
+        <div className="b-sky-500 h-max w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
           {/* Title */}
           <h2 className="font-semibold">Cart Details</h2>
 
-          <div className="bg-orange-500 space-y-4">
+          <div className="b-orange-500 space-y-4">
             {/* Subtotal */}
             <div className="flex justify-between text-sm">
               <p className="text-gray-500">Subtotal</p>

@@ -24,7 +24,7 @@ const ShippingForm = ({ setShippingForm }: { setShippingForm: (data: ShippingFor
   };
 
   return (
-    <form onSubmit={handleSubmit(handleShippingForm)} className="bg-amber-500 space-y-5">
+    <form onSubmit={handleSubmit(handleShippingForm)} className="b-amber-500 space-y-5">
       {/* Name Input */}
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-xs text-gray-500 font-medium">

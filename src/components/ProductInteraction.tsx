@@ -44,7 +44,7 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
     toast.success("Product added to cart");
   };
 
-  // console.log({ ca rt }, "<---interaction");
+  console.log({ cart }, "<---interaction");
 
   return (
     <div className="b-rose-600 space-y-5">

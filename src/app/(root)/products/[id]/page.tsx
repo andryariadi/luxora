@@ -14,7 +14,7 @@ const ProductDetailPage = async ({ params, searchParams }: { params: Promise<{ i
   const selectedColor = color || (product?.colors[0] as string);
 
   return (
-    <section className="b-amber-500 container flex flex-col md:flex-row md:gap-10 pt-10">
+    <section className="b-amber-500 container flex flex-col md:flex-row items-start md:gap-10 pt-10">
       {/* Left - Product Image */}
       <div className="w-full lg:w-5/12 relative aspect-[2/3]">
         <Image src={product.images[selectedColor]} alt={product.name} fill className="object-contain rounded-md" />
