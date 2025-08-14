@@ -115,7 +115,7 @@ export const products: ProductType[] = [
       { size: "m", color: "gray", stock: 8, price: 39.9 },
       { size: "l", color: "gray", stock: 12, price: 39.9 },
       { size: "xl", color: "gray", stock: 5, price: 42.9 },
-      { size: "xxl", color: "gray", stock: 3, price: 42.9 },
+      { size: "xxl", color: "gray", stock: 5, price: 42.9 },
 
       // Purple variants
       { size: "s", color: "purple", stock: 10, price: 39.9 },
@@ -129,7 +129,7 @@ export const products: ProductType[] = [
       { size: "m", color: "green", stock: 9, price: 39.9 },
       { size: "l", color: "green", stock: 7, price: 39.9 },
       { size: "xl", color: "green", stock: 3, price: 42.9 },
-      { size: "xxl", color: "green", stock: 1, price: 42.9 },
+      { size: "xxl", color: "green", stock: 5, price: 42.9 },
     ],
     availableSizes: ["s", "m", "l", "xl", "xxl"],
     availableColors: ["gray", "purple", "green"],

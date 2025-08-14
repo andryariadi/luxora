@@ -26,7 +26,7 @@ export type CartItemType = ProductType & {
   selectedSize: string;
   selectedColor: string;
   variantPrice?: number;
-  maxStock: number;
+  maxStock?: number;
   remainingStock?: number;
 };
 

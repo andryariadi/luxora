@@ -40,8 +40,8 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
       quantity,
       selectedColor,
       selectedSize,
-      variantPrice: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.price || 0,
-      maxStock: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.stock || 0,
+      // variantPrice: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.price || 0,
+      // maxStock: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.stock || 0,
     });
 
     toast.success("Product added to cart");
