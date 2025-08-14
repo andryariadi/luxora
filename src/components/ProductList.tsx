@@ -5,6 +5,8 @@ import Filter from "./Filter";
 import Link from "next/link";
 
 const ProductList = ({ isShowFilter, category }: { isShowFilter: boolean; category?: string }) => {
+  console.log({ products }, "<---productList");
+
   return (
     <section className="b-fuchsia-500 space-y-5">
       {/* Category */}

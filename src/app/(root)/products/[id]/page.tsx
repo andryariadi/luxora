@@ -10,14 +10,14 @@ const ProductDetailPage = async ({ params, searchParams }: { params: Promise<{ i
 
   if (!product) return <div>Product not found</div>;
 
-  const selectedSize = size || (product?.sizes[0] as string);
-  const selectedColor = color || (product?.colors[0] as string);
+  const selectedSize = size || (product?.availableSizes[0] as string);
+  const selectedColor = color || (product?.availableColors[0] as string);
 
   return (
     <section className="b-amber-500 container flex flex-col md:flex-row items-start md:gap-10 pt-10">
       {/* Left - Product Image */}
       <div className="w-full lg:w-5/12 relative aspect-[2/3]">
-        <Image src={product.images[selectedColor]} alt={product.name} fill className="object-contain rounded-md" />
+        <Image src={product.avaliableimages[selectedColor]} alt={product.name} fill className="object-contain rounded-md" />
       </div>
 
       {/* Right - Product Detail */}
@@ -27,7 +27,7 @@ const ProductDetailPage = async ({ params, searchParams }: { params: Promise<{ i
         {/* Product Description */}
         <p className="text-gray-500 font-sora">{product.description}</p>
         {/* Product Price */}
-        <h2 className="text-2xl font-semibold">${product.price.toFixed(2)}</h2>
+        <h2 className="text-2xl font-semibold">${product.basePrice.toFixed(2)}</h2>
 
         {/* Product Interaction */}
         <ProductInteraction product={product} selectedSize={selectedSize} selectedColor={selectedColor} />

@@ -36,15 +36,18 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
   const handleAddToCart = () => {
     addToCart({
       ...product,
+      variantId: `${product.id}-${selectedSize}-${selectedColor}`,
       quantity,
       selectedColor,
       selectedSize,
+      variantPrice: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.price || 0,
+      maxStock: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.stock || 0,
     });
 
     toast.success("Product added to cart");
   };
 
-  console.log({ cart }, "<---interaction");
+  console.log({ product, cart }, "<---postInteraction");
 
   return (
     <div className="b-rose-600 space-y-5">
@@ -53,7 +56,7 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
         <span className="text-gray-500">Size</span>
 
         <div className="flex items-center gap-2">
-          {product.sizes.map((size) => (
+          {product.availableSizes.map((size) => (
             <button type="button" className={`border-1 p-[2px] ${selectedSize === size ? "border-gray-600" : "border-gray-300"}`} key={size} onClick={() => handleTypeChange("size", size)}>
               <div className={`w-6 h-6 text-center flex items-center justify-center ${selectedSize === size ? "bg-black text-white" : "bg-white text-black"}`}>{size.toUpperCase()}</div>
             </button>
@@ -66,8 +69,8 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
         <span className="text-gray-500">Color</span>
 
         <div className="flex items-center gap-2">
-          {product.colors.map((color) => (
-            <button type="button" className={`border-1 p-[2px] ${selectedColor === color ? "border-gray-300" : "border-white"}`} key={color} onClick={() => handleTypeChange("color", color)}>
+          {product.availableColors.map((color) => (
+            <button type="button" className={`border-1 p-[2px] ${selectedColor === color ? "border-gray-500" : "border-white"}`} key={color} onClick={() => handleTypeChange("color", color)}>
               <div className={`w-6 h-6`} style={{ backgroundColor: color }} />
             </button>
           ))}

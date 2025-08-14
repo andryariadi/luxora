@@ -9,8 +9,8 @@ import { useState } from "react";
 
 const ProductCard = ({ product }: { product: ProductType }) => {
   const [productTypes, setProductTypes] = useState({
-    size: product.sizes[0],
-    color: product.colors[0],
+    size: product.availableSizes[0],
+    color: product.availableColors[0],
   });
 
   const { addToCart, cart } = useCartStore();
@@ -22,14 +22,15 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     }));
   };
 
-  const handleToCart = () => {
-    addToCart({
-      ...product,
-      quantity: 1,
-      selectedSize: productTypes.size,
-      selectedColor: productTypes.color,
-    });
-  };
+  // const handleToCart = () => {
+  //   addToCart({
+  //     ...product,
+  //     variantId: `${product.id}-${productTypes.size}-${productTypes.color}`,
+  //     quantity: 1,
+  //     selectedSize: productTypes.size,
+  //     selectedColor: productTypes.color,
+  //   });
+  // };
 
   // console.log({ cart }, "<---card");
 
@@ -39,7 +40,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
       <figure className="overflow-hidden">
         <Link href={`/products/${product.id}`}>
           <div className="relative aspect-[3/4]">
-            <Image src={product.images[productTypes.color]} alt={product.name} fill className="object-cover hover:scale-105 transition-all duration-500" />
+            <Image src={product.avaliableimages[productTypes.color]} alt={product.name} fill className="object-cover hover:scale-105 transition-all duration-500" />
           </div>
         </Link>
       </figure>
@@ -63,7 +64,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
             <div className="b-rose-500 relative">
               <select name="size" id="size" className="w-[3.2rem] text-xs font-medium border border-gray-300 rounded-md px-2 py-1 appearance-none" onChange={(e) => handleProductType({ type: "size", value: e.target.value })}>
-                {product.sizes.map((size) => (
+                {product.availableSizes.map((size) => (
                   <option key={size} value={size} className="text-base">
                     {size.toUpperCase()}
                   </option>
@@ -81,7 +82,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             <span className="text-gray-500 text-xs">Color</span>
 
             <div className="py-1 flex items-center gap-2">
-              {product.colors.map((color) => (
+              {product.availableColors.map((color) => (
                 <button type="button" className={`border-1 ${productTypes.color === color ? "border-gray-400" : "border-gray-200"} rounded-full p-[1.2px]`} key={color} onClick={() => handleProductType({ type: "color", value: color })}>
                   <div className="w-[14px] h-[14px] rounded-full" style={{ backgroundColor: color }} />
                 </button>
@@ -93,10 +94,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         {/* Price & Cart */}
         <div className="b-fuchsia-500 flex items-center justify-between">
           {/* Price */}
-          <p className="font-medium">${product.price.toFixed(2)}</p>
+          <p className="font-medium">${product.basePrice.toFixed(2)}</p>
 
           {/* Cart */}
-          <button onClick={handleToCart} className="group p-2 rounded-md border-1 border-gray-200 shadow-lg text-sm hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2">
+          <button className="group p-2 rounded-md border-1 border-gray-200 shadow-lg text-sm hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2">
             <ShoppingCart className="w-4 h-4" />
             <span className="hidden text-xs group-hover:block transition-all duration-500">Add to Cart</span>
           </button>
