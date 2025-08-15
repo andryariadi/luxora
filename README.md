@@ -87,6 +87,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
         };
       }),
 
+         // variantPrice: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.price || 0,
+      // maxStock: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.stock || 0,
+
 {
 // id: 1,
 // variantId: "1-m-gray", // Unique ID untuk kombinasi size+color

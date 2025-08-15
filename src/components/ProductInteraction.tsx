@@ -5,7 +5,6 @@ import { ProductType } from "@/libs/types";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const ProductInteraction = ({ product, selectedSize, selectedColor }: { product: ProductType; selectedSize: string; selectedColor: string }) => {
   const router = useRouter();
@@ -14,6 +13,10 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
   const [quantity, setQuantity] = useState(1);
 
   const { addToCart, cart } = useCartStore();
+
+  const selectedVariantProduct = product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor);
+
+  const selectedCartProduct = cart.find((item) => item.variantId === `${product.id}-${selectedSize}-${selectedColor}`);
 
   const handleTypeChange = (type: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -40,11 +43,7 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
       quantity,
       selectedColor,
       selectedSize,
-      // variantPrice: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.price || 0,
-      // maxStock: product.variants?.find((v) => v.size === selectedSize && v.color === selectedColor)?.stock || 0,
     });
-
-    toast.success("Product added to cart");
   };
 
   console.log({ product, cart }, "<---postInteraction");
@@ -77,19 +76,31 @@ const ProductInteraction = ({ product, selectedSize, selectedColor }: { product:
         </div>
       </div>
 
-      {/* Quantity */}
-      <div className="flex flex-col gap-2 text-sm">
-        <span className="text-gray-500">Quantity</span>
-        <div className="flex items-center gap-2">
-          <button disabled={quantity === 1} className="border-1 border-gray-300 p-1" onClick={() => handleQuantityChange("decrement")}>
-            <Minus className="w-4 h-4" />
-          </button>
+      {/* Quantity & Stock */}
+      <div className="flex items-center gap-3">
+        {/* Quantity */}
+        <div className="flex flex-col gap-2 text-sm">
+          <span className="text-gray-500">Quantity</span>
+          <div className="flex items-center gap-2">
+            <button disabled={quantity === 1} className={`border-1 border-gray-300 p-1 ${quantity === 1 && "opacity-40 cursor-not-allowed"}`} onClick={() => handleQuantityChange("decrement")}>
+              <Minus className="w-4 h-4" />
+            </button>
 
-          <span>{quantity}</span>
+            <span>{quantity}</span>
 
-          <button className="border-1 border-gray-300 p-1" onClick={() => handleQuantityChange("increment")}>
-            <Plus className="w-4 h-4" />
-          </button>
+            <button
+              disabled={selectedVariantProduct && quantity >= selectedVariantProduct?.stock}
+              className={`border-1 border-gray-300 p-1 ${selectedVariantProduct && quantity >= selectedVariantProduct?.stock && "opacity-40 cursor-not-allowed"}`}
+              onClick={() => handleQuantityChange("increment")}
+            >
+              <Plus className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Stock */}
+        <div className="self-end">
+          <span className="text-xs text-gray-500">Stock: {selectedCartProduct?.remainingStock || selectedCartProduct?.remainingStock === 0 ? selectedCartProduct?.remainingStock : selectedVariantProduct?.stock}</span>
         </div>
       </div>
 

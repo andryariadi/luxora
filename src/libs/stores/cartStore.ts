@@ -11,46 +11,60 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>((set) => 
     const quantity = product.quantity || 1;
 
     return set((state) => {
-      // 1. Cari variant yang sesuai di data produk
+      // 1. Cari variant yang sesuai di data produk:
       const selectedVariant = product.variants?.find((v) => v.size === product.selectedSize && v.color === product.selectedColor);
 
       console.log({ selectedVariant }, "<---addToCart2");
 
-      // 2. Validasi stok
-      if (!selectedVariant || quantity > selectedVariant.stock) {
-        console.log(`Maksimal pembelian: ${selectedVariant?.stock} item1`);
+      // 2. Validasi stok:
+      if (selectedVariant?.stock === 0) {
+        toast.error("Product out of stock");
         return { cart: state.cart };
       }
 
-      // 3. Cek apakah item sudah ada di cart
+      if (!selectedVariant || quantity > selectedVariant.stock) {
+        toast.error(`Maximum product purchase is ${selectedVariant?.stock}`);
+        return { cart: state.cart };
+      }
+
+      // 3. Cek apakah item sudah ada di cart:
       const variantId = `${product.id}-${product.selectedSize}-${product.selectedColor}`;
 
       const existingItemIndex = state.cart.findIndex((item) => item.variantId === variantId);
 
-      // 4. Jika sudah ada, update quantity
+      // Jika sudah ada, update quantity dan remainingStock:
       if (existingItemIndex !== -1) {
         const newCart = [...state.cart];
 
         const newQuantity = newCart[existingItemIndex].quantity + quantity;
 
-        console.log(newCart[existingItemIndex], "<---addToCart3");
-        console.log(newCart[existingItemIndex].remainingStock, "<---addToCart4");
+        const remainingStock = newCart[existingItemIndex].remainingStock ?? 0;
 
-        // Validasi stok lagi
-        if (quantity > newCart[existingItemIndex].remainingStock) {
-          console.log(`Maksimal pembelian: ${selectedVariant.stock} item2`);
+        // Validasi stok lagi:
+        if (quantity > remainingStock) {
+          if (remainingStock === 0) {
+            toast.error("Product out of stock2");
+            return { cart: state.cart };
+          }
+          toast.error(`Maximum product purchase is ${remainingStock} item`);
+
           return { cart: state.cart };
         }
 
         newCart[existingItemIndex] = {
           ...newCart[existingItemIndex],
           quantity: newQuantity,
-          remainingStock: newCart[existingItemIndex].remainingStock - quantity,
+          remainingStock: remainingStock - quantity,
         };
+
+        toast.success(`Product added to cart`);
+
         return { cart: newCart };
       }
 
-      // 5. Jika item baru
+      toast.success(`Product ${product.name} added to cart`);
+
+      // 4. Jika item baru:
       return {
         cart: [
           ...state.cart,

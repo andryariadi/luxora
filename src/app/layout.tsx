@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Archivo, Roboto, Sora, Urbanist } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -45,7 +46,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${archivo.variable} ${roboto.variable} ${sora.variable} ${urbanist.variable} font-archivo antialiased`}>{children}</body>
+      <body className={`${archivo.variable} ${roboto.variable} ${sora.variable} ${urbanist.variable} font-archivo antialiased`}>
+        {children}
+        <ToastContainer autoClose={1500} theme="colored" />
+      </body>
     </html>
   );
 }
