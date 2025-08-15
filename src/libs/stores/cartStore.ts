@@ -5,7 +5,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 const useCartStore = create<CartStoreStateType & CartStoreActionsType>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cart: [],
       hasHydrated: false,
       addToCart: (product) => {
@@ -85,11 +85,64 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>()(
           };
         });
       },
+      updateQuantity: (variantId, newQuantity) => {
+        return set((state) => {
+          console.log({ variantId, newQuantity }, "<---updateQuantity");
 
-      removeFromCart: (product: CartItemType) =>
-        set((state) => ({
-          cart: state.cart.filter((item) => !(item.id === product.id && item.selectedSize === product.selectedSize && item.selectedColor === product.selectedColor)),
-        })),
+          if (newQuantity === 0) {
+            const filteredCart = state.cart.filter((item) => item.variantId !== variantId);
+
+            toast.success(`Product ${variantId} removed from cart`);
+
+            return { cart: filteredCart };
+          }
+
+          const indexCart = state.cart.findIndex((item) => item.variantId === variantId);
+
+          if (indexCart !== -1) {
+            const item = state.cart[indexCart];
+
+            const maxStock = item.maxStock ?? 0;
+
+            // Validasi stok:
+            if (newQuantity > maxStock) {
+              toast.error(` Maximum product purchase is ${maxStock}`);
+
+              return { cart: state.cart };
+            }
+
+            const newCart = [...state.cart];
+
+            newCart[indexCart] = {
+              ...newCart[indexCart],
+              quantity: newQuantity,
+              remainingStock: maxStock - newQuantity,
+            };
+
+            toast.success("Quantity updated");
+
+            return { cart: newCart };
+          }
+
+          toast.error("Product not found in cart");
+
+          return { cart: state.cart };
+        });
+      },
+      removeFromCart: (variantId) => {
+        return set((state) => {
+          const newCart = [...state.cart];
+
+          const indexCart = newCart.findIndex((item) => item.variantId === variantId);
+
+          if (indexCart !== -1) {
+            newCart.splice(indexCart, 1);
+
+            toast.success(`Product ${variantId} removed from cart`);
+          }
+          return { cart: newCart };
+        });
+      },
     }),
     {
       name: "cart",

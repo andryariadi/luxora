@@ -67,7 +67,7 @@ const StepsCart = () => {
             {/* Subtotal */}
             <div className="flex justify-between text-sm">
               <p className="text-gray-500">Subtotal</p>
-              <p className="font-medium">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</p>
+              <p className="font-medium">${cart.reduce((acc, item) => acc + (item.variantPrice ?? 0) * item.quantity, 0).toFixed(2)}</p>
             </div>
 
             {/* Discount */}
@@ -87,7 +87,7 @@ const StepsCart = () => {
             {/* Total */}
             <div className="flex justify-between">
               <p className="text-gray-800 font-semibold">Total</p>
-              <p className="font-medium">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</p>
+              <p className="font-medium">${cart.reduce((acc, item) => acc + (item.variantPrice ?? 0) * item.quantity, 0).toFixed(2)}</p>
             </div>
 
             {/* Continue Button */}

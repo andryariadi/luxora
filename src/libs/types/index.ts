@@ -37,7 +37,8 @@ export type CartStoreStateType = {
 
 export type CartStoreActionsType = {
   addToCart: (product: CartItemType) => void;
-  //   removeFromCart: (product: CartItemType) => void;
+  updateQuantity: (variantId: string, quantity: number) => void;
+  removeFromCart: (variantId: string) => void;
   //   clearCart: () => void;
 };
 
