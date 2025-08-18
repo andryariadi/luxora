@@ -1,5 +1,6 @@
 import ProductInteraction from "@/components/ProductInteraction";
 import { cardPayment, products } from "@/libs/constant";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 const ProductDetailPage = async ({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ color: string; size: string }> }) => {

@@ -148,6 +148,11 @@ const useCartStore = create<CartStoreStateType & CartStoreActionsType>()(
       name: "cart",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({ cart: state.cart }), // Optional: only persist the cart
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          state.hasHydrated = true;
+        }
+      },
     }
   )
 );

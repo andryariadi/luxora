@@ -5,8 +5,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Categories = () => {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const pathname = usePathname();
+  const router = useRouter();
 
   const selectedCategory = searchParams.get("category") || "all";
 
