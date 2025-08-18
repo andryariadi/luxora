@@ -7,9 +7,9 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-amber-500 flex">
+    <div className="b-amber-500 flex">
       <Sidebar />
-      <main>
+      <main className="b-lime-600">
         <Nabvar />
         {children}
       </main>

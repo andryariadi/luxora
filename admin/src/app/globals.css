@@ -121,11 +121,11 @@
   }
 
   body {
-    @apply bg-foreground text-background;
+    @apply bg-background text-foreground;
     scroll-behavior: smooth;
   }
 
   main {
-    @apply min-h-screen;
+    @apply min-h-screen w-full;
   }
 }

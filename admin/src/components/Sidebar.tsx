@@ -1,5 +1,5 @@
 const Sidebar = () => {
-  return <aside>Sidebar</aside>;
+  return <aside className="b-fuchsia-500">Sidebar</aside>;
 };
 
 export default Sidebar;
