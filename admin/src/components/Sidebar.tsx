@@ -22,7 +22,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 const ASidebar = () => {
   return (
-    <Sidebar collapsible="icon" className="bg-fuchsia-500">
+    <Sidebar collapsible="icon" className="border-sidebar-border">
       {/* Header */}
       <SidebarHeader className="py-[14px]">
         <SidebarMenu>
@@ -43,7 +43,7 @@ const ASidebar = () => {
       <SidebarSeparator style={{ width: "auto" }} />
 
       {/* Content */}
-      <SidebarContent>
+      <SidebarContent className="sidebarcontent">
         {/* Application */}
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -89,7 +89,7 @@ const ASidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Sheet>
-                    <SheetTrigger asChild className="bg-rose-500">
+                    <SheetTrigger asChild>
                       <SidebarMenuButton asChild>
                         <Link href="#">
                           <Plus />
