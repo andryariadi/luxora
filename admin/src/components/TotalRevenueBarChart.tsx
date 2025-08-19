@@ -1,7 +1,7 @@
 "use client";
 
 import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart";
-import { chartData } from "@/lib/constants";
+import { barChartData } from "@/lib/constants";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const chartConfig = {
@@ -21,8 +21,8 @@ const TotalRevenueBarChart = () => {
       <h1 className="text-lg font-medium">Total Revenue</h1>
 
       {/* Chart */}
-      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-        <BarChart accessibilityLayer data={chartData}>
+      <ChartContainer config={chartConfig} className="min-h-[420px] w-full">
+        <BarChart accessibilityLayer data={barChartData}>
           <CartesianGrid vertical={false} />
 
           <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value.slice(0, 3)} />

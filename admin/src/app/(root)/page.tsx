@@ -18,15 +18,15 @@ export default function HomePage() {
         <CardList title="Lates Transactions" />
       </div>
 
-      <div className="bg-green-500 shadow-sm dark:shadow-none p-4 rounded-lg border border-sidebar-border">
+      <div className="bg-primary-foreground shadow-sm dark:shadow-none p-4 rounded-lg border border-sidebar-border">
         <BrowserUsegePieChart />
       </div>
 
-      <div className="bg-fuchsia-500 shadow-sm dark:shadow-none p-4 rounded-lg border border-sidebar-border">
+      <div className="bg-primary-foreground shadow-sm dark:shadow-none p-4 rounded-lg border border-sidebar-border">
         <TodoList />
       </div>
 
-      <div className="bg-teal-500 shadow-sm dark:shadow-none p-4 rounded-lg border border-sidebar-border lg:col-span-2 xl:col-span-1 2xl:col-span-2">
+      <div className="bg-primary-foreground shadow-sm dark:shadow-none p-4 rounded-lg border border-sidebar-border lg:col-span-2 xl:col-span-1 2xl:col-span-2">
         <TotalVisitorAreaChart />
       </div>
 

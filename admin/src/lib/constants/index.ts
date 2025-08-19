@@ -28,13 +28,30 @@ export const sidebarItems = [
   },
 ];
 
-export const chartData = [
+export const barChartData = [
   { month: "January", total: 186, successful: 80 },
   { month: "February", total: 305, successful: 200 },
   { month: "March", total: 237, successful: 120 },
   { month: "April", total: 173, successful: 100 },
   { month: "May", total: 209, successful: 130 },
   { month: "June", total: 214, successful: 140 },
+];
+
+export const pieChartData = [
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+];
+
+export const areaChartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
 ];
 
 export const popularProducts = [

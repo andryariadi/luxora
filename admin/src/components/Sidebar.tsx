@@ -43,7 +43,7 @@ const ASidebar = () => {
       <SidebarSeparator style={{ width: "auto" }} />
 
       {/* Content */}
-      <SidebarContent className="sidebarcontent">
+      <SidebarContent className="scrollbar">
         {/* Application */}
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

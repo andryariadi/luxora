@@ -132,28 +132,28 @@
 
 /* Scrollbar Sidebar Content */
 
-.sidebarcontent {
+.scrollbar {
   --sb-track-color: #232e33;
   --sb-thumb-color: #6baf8d;
   --sb-size: 5px;
 }
 
-.sidebarcontent::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
   width: var(--sb-size);
 }
 
-.sidebarcontent::-webkit-scrollbar-track {
+.scrollbar::-webkit-scrollbar-track {
   background: var(--sb-track-color);
   border-radius: 15px;
 }
 
-.sidebarcontent::-webkit-scrollbar-thumb {
+.scrollbar::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 15px;
 }
 
 @supports not selector(::-webkit-scrollbar) {
-  .sidebarcontent {
+  .scrollbar {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
 }
