@@ -6,13 +6,14 @@ import { LogOut, Moon, Settings, Sun, User } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
+import { SidebarTrigger } from "./ui/sidebar";
 
 const Nabvar = () => {
   const { setTheme } = useTheme();
   return (
     <nav className="sticky top-0 z-10 border-b bg-background flex items-center justify-between p-4">
-      {/* Collapse Icon */}
-      <div>andry</div>
+      {/* Collapse Sidebar Icon */}
+      <SidebarTrigger />
 
       {/* Nav Items */}
       <div className="b-amber-500 flex items-center gap-4">

@@ -1,5 +1,6 @@
 import Nabvar from "@/components/Nabvar";
-import Sidebar from "@/components/Sidebar";
+import ASidebar from "@/components/Sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function AppLayout({
   children,
@@ -7,12 +8,15 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="b-amber-500 flex">
-      <Sidebar />
-      <main className="b-lime-600">
-        <Nabvar />
-        {children}
-      </main>
-    </div>
+    <SidebarProvider>
+      <div className="b-amber-500 w-full flex">
+        <ASidebar />
+
+        <main className="b-lime-600">
+          <Nabvar />
+          {children}
+        </main>
+      </div>
+    </SidebarProvider>
   );
 }
