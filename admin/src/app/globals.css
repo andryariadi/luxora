@@ -128,6 +128,10 @@
   main {
     @apply min-h-screen w-full;
   }
+
+  .page {
+    @apply p-4;
+  }
 }
 
 /* Scrollbar Sidebar Content */
