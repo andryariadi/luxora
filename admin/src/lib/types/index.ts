@@ -1,3 +1,6 @@
+import z from "zod";
+import { userFormSchemaValidation } from "../validations";
+
 export type User = {
   id: string;
   avatar: string;
@@ -5,3 +8,5 @@ export type User = {
   email: string;
   status: "active" | "inactive";
 };
+
+export type UserFormSchema = z.infer<typeof userFormSchemaValidation>;
