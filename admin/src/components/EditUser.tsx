@@ -36,10 +36,13 @@ const EditUser = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
+
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
+
                     <FormDescription>Enter user full name.</FormDescription>
+
                     <FormMessage />
                   </FormItem>
                 )}

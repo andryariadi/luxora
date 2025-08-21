@@ -39,6 +39,7 @@ const UserProfilePage = () => {
           {/* User Badges */}
           <div className="bg-primary-foreground p-4 rounded-lg">
             <h1 className="text-xl font-semibold">User Badges</h1>
+
             <div className="flex gap-4 mt-4">
               <HoverCard>
                 <HoverCardTrigger>

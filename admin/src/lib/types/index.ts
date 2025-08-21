@@ -9,4 +9,15 @@ export type User = {
   status: "active" | "inactive";
 };
 
+export type Product = {
+  id: string | number;
+  price: number;
+  name: string;
+  shortDescription: string;
+  description: string;
+  sizes: string[];
+  colors: string[];
+  images: Record<string, string>;
+};
+
 export type UserFormSchema = z.infer<typeof userFormSchemaValidation>;
