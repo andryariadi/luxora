@@ -19,6 +19,10 @@ import { sidebarItems } from "@/lib/constants";
 import { ChevronsUpDown, Plus, Shirt, ShoppingBasket, User, User2 } from "lucide-react";
 import { Sheet, SheetTrigger } from "./ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import AddOrder from "./AddOrder";
+import AddUser from "./AddUser";
+import AddCategory from "./AddCategory";
+import AddProduct from "./AddProduct";
 
 const ASidebar = () => {
   return (
@@ -97,7 +101,7 @@ const ASidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    {/* <AddProduct /> */}
+                    <AddProduct />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -113,7 +117,7 @@ const ASidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    {/* <AddCategory /> */}
+                    <AddCategory />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -152,7 +156,7 @@ const ASidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    {/* <AddUser /> */}
+                    <AddUser />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -173,7 +177,7 @@ const ASidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/users">
+                  <Link href="/order">
                     <ShoppingBasket />
                     See All Transactions
                   </Link>
@@ -191,7 +195,8 @@ const ASidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    {/* <AddOrder /> */}
+
+                    <AddOrder />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>

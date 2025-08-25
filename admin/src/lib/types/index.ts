@@ -1,5 +1,5 @@
 import z from "zod";
-import { userFormSchemaValidation } from "../validations";
+import { categoryFormSchemaValidation, orderFormSchemaValidation, productFormSchemaValidation, userFormSchemaValidation } from "../validations";
 
 export type User = {
   id: string;
@@ -21,3 +21,6 @@ export type Product = {
 };
 
 export type UserFormSchema = z.infer<typeof userFormSchemaValidation>;
+export type ProductFormSchema = z.infer<typeof productFormSchemaValidation>;
+export type CategoryFormSchema = z.infer<typeof categoryFormSchemaValidation>;
+export type OrderFormSchema = z.infer<typeof orderFormSchemaValidation>;
