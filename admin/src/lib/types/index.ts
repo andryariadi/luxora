@@ -20,6 +20,14 @@ export type Product = {
   images: Record<string, string>;
 };
 
+export type Transaction = {
+  id: string | number;
+  title: string;
+  badge: string;
+  image: string;
+  count: number;
+};
+
 export type UserFormSchema = z.infer<typeof userFormSchemaValidation>;
 export type ProductFormSchema = z.infer<typeof productFormSchemaValidation>;
 export type CategoryFormSchema = z.infer<typeof categoryFormSchemaValidation>;

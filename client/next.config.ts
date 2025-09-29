@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
         hostname: "*",
       },
     ],
+    deviceSizes: [640, 1024, 1600],
   },
   experimental: {
     serverActions: {
