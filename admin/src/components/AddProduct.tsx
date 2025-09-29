@@ -63,7 +63,7 @@ const AddProduct = () => {
 
   const selectedColors = form.watch("colors");
 
-  console.log({ selectedColors }, "<----selectedColors");
+  console.log({ formwatch: form.watch(), selectedColors }, "<----selectedColors");
 
   return (
     <SheetContent className="w-full max-w-2xl">
